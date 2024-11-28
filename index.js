@@ -1,11 +1,26 @@
 
     $(document).ready(function () { 
+        var modal = document.getElementById("myModal");
+        console.log("kkkkk")
 
-        $('#recipe1').on('click', function() {
-            $.sweetModal({
-                title: 'HTML Content',
-                content: 'You can place <b>anything</b> <i>you</i> want in here.'
-            });
+        $('.btn-info').on('click', function() {
+            // $('#openModal').show();
+            console.log("helo")
+            modal.style.display = "block";          
+            
+        })
+        
+
+        $('#close').on('click', function() {
+            // $('#openModal').show();
+            modal.style.display = "none";
+            console.log("helo")
+            
         })
 
+
+        
+
     });
+
+    
