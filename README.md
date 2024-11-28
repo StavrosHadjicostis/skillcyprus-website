@@ -1,2 +1,1 @@
 # skillcyprus-website
-Stavros Hadjicostis
