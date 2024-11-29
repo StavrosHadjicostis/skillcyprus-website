@@ -3,7 +3,7 @@
         var modal = document.getElementById("myModal");
         console.log("kkkkk")
 
-        $('.btn-info').on('click', function() {
+        $('.btn-info').on('click', function(req,res) {
             // $('#openModal').show();
             console.log("helo")
             modal.style.display = "block";          
