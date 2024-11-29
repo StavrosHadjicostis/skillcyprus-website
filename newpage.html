@@ -317,13 +317,17 @@
                             //     "render": function ( data) {
                             //     return '<img src="image_url" width="40px">';}
                             //     }
-                        ]
+                        ],
+                        columnDefs: [{
+                            "defaultContent": "-",
+                            "targets": "_all"
+                        }]
                     });
                     
                         
                     fav.row.add({
-                        "name": doc.data.name,
-                        "instruction": doc.data.instructions
+                        "name": doc.data().name,
+                        "instruction": doc.data().instructions
                     });                         
                           
                     fav.draw();
