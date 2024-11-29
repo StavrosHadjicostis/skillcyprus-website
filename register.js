@@ -5,7 +5,7 @@
 //   import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -35,9 +35,9 @@ import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/fir
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     
-    signInWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            // Signed in 
+            // Signed up 
             const user = userCredential.user;
             window.location.href="./index.html"
             // ...
@@ -46,6 +46,7 @@ import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/fir
             const errorCode = error.code;
             const errorMessage = error.message;
             alert(errorMessage)
+            // ..
         });
 
 
