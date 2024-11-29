@@ -103,6 +103,29 @@
             <input class="m-2" type="text" id="ingredient" placeholder="Ingredient" />
             <button class="m-4 btn btn-primary" id="getRecipeBtn">Get Recipe</button>
         </div>
+
+        <div class="p-5">
+            <h2 class="p-4">Favorites</h2>
+            <!-- <h5 id="mealname"></h5>
+            <img id="image" src="" alt="">
+            <p id="recipeinfo"></p> -->
+
+            <table id="favorites" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <!-- <th>Image</th> -->
+                        <th>Instructions</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <!-- <td>Tiger Nixon</td>
+                        <td>System Architect</td>
+                        <td><button>Add to favorite</button></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         
         <div class="p-5">
             <h2 class="p-4">Get the Recipe Info Below</h2>
@@ -277,7 +300,40 @@
 
 
 
+          db.collection("favorites")
+            .get()
+            .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    // doc.data() is never undefined for query doc snapshots
+                    console.log(doc.id, " => ", doc.data());
+                    var fav;
 
+                    fav = $('#favorites').DataTable({
+                        data: doc.data(),
+                        columns: [
+                            { data: 'name' },
+                            { data: 'instruction' }
+                            // { data: "image_url" ,
+                            //     "render": function ( data) {
+                            //     return '<img src="image_url" width="40px">';}
+                            //     }
+                        ]
+                    });
+                    
+                        
+                    fav.row.add({
+                        "name": doc.data.name,
+                        "instruction": doc.data.instructions
+                    });                         
+                          
+                    fav.draw();
+                
+
+                });
+            })
+            .catch((error) => {
+                console.log("Error getting documents: ", error);
+            });
 
 
         //   JavaScript to Add Data to Firestore:
